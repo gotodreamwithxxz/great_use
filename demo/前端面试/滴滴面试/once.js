@@ -34,7 +34,7 @@ function shallowCopy(p) {  //浅拷贝
     }
     return c;
 }
-Chinese.arr = [1,2]
+Chinese.arr = [1, 2]
 var Doctor = shallowCopy(Chinese)
 Doctor.cancer = '医生'    //Chinese对象arr属性push新元素，但是影响到Doctor
 Chinese.arr.push(500)
@@ -91,6 +91,5 @@ console.dir(test)
 console.dir(result)
 
 
-/**
- * Promise的问题，通顺起来，要不然讲起来模糊不清mb
- */
+
+
