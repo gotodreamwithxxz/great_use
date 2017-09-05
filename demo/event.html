@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Web API</title>
+</head>
+<body>
+    <h1>Hello Web API</h1>
+    <button id="btn1">click</button>
+    <div id="div">
+        <a href="" id="link1">link1</a>
+        <a href="" id="link2">link2</a>
+        <a href="" id="link3">link3</a>
+        <a href="" id="link4">link4</a>
+    </div>
+    <script>
+        //不代理demo
+        var btn = document.getElementById('btn1');
+        bindEvent(btn, 'click', function(e){
+            console.log('clicked!');
+        })
+
+        //代理demo
+        var div = document.getElementById('div');
+        bindEvent(div , 'click', 'a' , function(e){
+            e.preventDefault();
+            console.log(e.target.innerHTML);
+        })
+
+
+        //通用绑定事件函数.selector为字符串选择器
+        function bindEvent(elem , type , selector, fn){
+            if (fn == null) {   //不使用代理
+                fn = selector;
+                selector = null;
+            }
+            elem.addEventListener(type, function(e) {
+                var target;
+                if (selector) {  //进去代理 
+                    target = e.target;
+                    if (target.matches(selector)) {
+                        fn.call(target, e);
+                    } 
+                }else {
+                    fn(e);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
