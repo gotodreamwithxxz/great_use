@@ -1,7 +1,7 @@
 /**
- * 
- * Event Loop 事件循环机制从整体上的告诉了我们所写的JavaScript代码的执行顺序
- * JavaScript的一大特点就是单线程，而这个线程中拥有唯一的一个事件循环。
+ *  多线程不仅占用多倍的系统资源，也闲置多倍的资源，这显然不合理。Event Loop就是为了解决这个问题而提出的
+ *  JavaScript的一大特点就是单线程，而这个线程中拥有唯一的一个事件循环。
+ *  Event Loop 事件循环机制从整体上的告诉了我们所写的JavaScript代码的执行顺序
  *  它从script(整体代码)开始第一次循环。之后全局上下文进入函数调用栈。直到调用栈清空(只剩全局)，然后执行所有的micro-task。
  *  当所有可执行的micro-task执行完毕之后。循环再次从macro-task开始，找到其中一个任务队列执行完毕，然后再执行所有的micro-task，
  *  这样一直循环下去。其中每一个任务的执行，无论是macro-task还是micro-task，都是借助函数调用栈来完成。
@@ -86,7 +86,7 @@ setImmediate(function () {
     })
 })
 
-// out result:
+// ->->->out result:
 // golb1
 // glob1_promise
 // glob2_promise

@@ -90,6 +90,3 @@ result.friend.push('fdagldf;ghad')
 console.dir(test)
 console.dir(result)
 
-
-
-

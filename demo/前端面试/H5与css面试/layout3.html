@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .center {
+            width: auto;
+            height: 300px;
+            margin-left: 210px;
+            margin-right: 200px;
+            background-color: #f00;
+        }
+        .sub {
+            width: 200px;
+            height: 300px;
+            float: left;
+            background-color: #ff0;
+        }
+        .extra {
+            width: 190px;
+            height: 300px;
+            float: right;
+            background-color: #111;
+        }
+    </style>
+</head>
+    
+<body>
+    <!-- 自身float，center必须在最后一个 
+        center占据文档流位置，所以一定要放在最后-->
+    <div class="container">
+        <div class="sub"></div>
+        <div class="extra"></div>
+        <div class="center"></div>
+    </div>
+</body>
+
+</html>
