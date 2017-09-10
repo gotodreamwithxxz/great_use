@@ -4,9 +4,15 @@
 
 /***********************************************************
  * 为什么会有Promise出现?
- *  1.最主要的一个场景就是ajax请求(解决回调地狱)
- *  2.为了我们的代码更加具有可读性和可维护性，我们需要将数据请求与数据处理明确的区分开来。上面的写法，是完全没有区分开，
- *    当数据变得复杂时，也许我们自己都无法轻松维护自己的代码了。这也是模块化过程中，必须要掌握的一个重要技能，请一定重视。
+ *  1.Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。
+ *  2.最主要的一个场景就是ajax请求(Promise用于解决回调地狱)
+ *  3.为了我们的代码更加具有可读性和可维护性，我们需要将数据请求与数据处理明确的区分开来。
+ *      传统的写法是完全没有区分开，当数据变得复杂时，也许我们自己都无法轻松维护自己的代码了。
+ *      这也是模块化过程中，必须要掌握的一个重要技能，请一定重视。
+ * 
+ * 它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。
+ *  所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。
+ *  从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理。
  */
 
 // 简单的ajax原生实现
@@ -54,15 +60,15 @@ function want() {
     console.log('这是你想要执行的代码');
 }
 
-function fn(want) {
+function fn(fn) {
     console.log('这里表示执行了一大堆各种代码');
 
     // 返回Promise对象
     return new Promise(function (resolve, reject) {
-        if (typeof want == 'function') {
-            resolve(want);
+        if (typeof fn == 'function') {
+            resolve(fn);
         } else {
-            reject('TypeError: ' + want + '不是一个函数')
+            reject('TypeError: ' + fn + '不是一个函数')
         }
     })
 }
@@ -71,9 +77,11 @@ fn(want).then(function (want) {
     want();
 })
 
-fn('1234').catch(function (err) {
-    console.log(err);
-})
+fn('1234').then(
+    function () { },
+    function (err) {
+        console.log(err);
+    })
 
 // 封装一个get请求的方法
 var url = 'https://hq.tigerbrokers.com/fundamental/finance_calendar/getType/2017-02-26/2017-06-10';
@@ -106,7 +114,7 @@ getJSON(url).then(resp => console.log(resp));
 /**
  * promise应用场景
  * 1.有效的将ajax的数据请求和数据处理分别放在不同的模块中进行管理，
- * 这样做的主要目的在于降低后期维护成本，便于管理。模块化开发（封装ajax）
+ *      这样做的主要目的在于降低后期维护成本，便于管理。模块化开发（封装ajax）
  * 2.图片加载
  * 3.弹窗提示问题，确定是resolve，取消是reject
  *
@@ -127,12 +135,11 @@ new Promise(function executor(resolve) {
 console.log(5);
 /**
  * 一道考题：
- * 应该考察我 JavaScript 的运行机制的，让我理一下思路。
+ * 确定考点：应该考察我 JavaScript 的运行机制的，让我理一下思路。
  * 首先先碰到一个 setTimeout，于是会先设置一个定时，在定时结束后将传递这个函数放到任务队列里面，因此开始肯定不会输出 1 。
- * 然后是一个 Promise，里面的函数是直接执行的，因此应该直接输出 2 3 。
+ * 然后是一个 Promise，里面的函数是直接执行的，因此应该直接输出 2、3 。
  * 然后，Promise 的 then 应当会放到当前 tick 的最后，但是还是在当前 tick 中。
- * 因此，应当先输出 5，然后再输出 4 。
- * 最后在到下一个 tick，就是 1 。
+ * 因此，应当先输出 5，然后再输出 4 。最后在到下一个 tick，就是 1 。
  *  “2 3 5 4 1”
  * 
  */
