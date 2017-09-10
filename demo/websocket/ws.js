@@ -9,7 +9,7 @@
 var socket = new WebSocket("ws://localhost:8080/guest");
 
 socket.onopen = function (openEvent) {
-    console.log("WebSocket conntected.");
+    console.log("WebSocket conntected!");
 };
 
 socket.onmessage = function (messageEvent) {
