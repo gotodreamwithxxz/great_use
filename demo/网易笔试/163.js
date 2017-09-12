@@ -25,12 +25,11 @@ var num = n;
 while (num != 0) {
     if (m==1){
     	arr.push('2');
-        num = Math.floor((num-1)/2);
-        m = (num-1)%2;
 	} else {
     	arr.push('1');
-        num = Math.floor((num-1)/2);
-        m = (num-1)%2;
-	}
+    }
+    num = Math.floor((num-1)/2);
+    m = (num-1)%2;
 }
 console.log(arr.reverse().join(''));
+

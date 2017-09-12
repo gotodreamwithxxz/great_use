@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 多行文本溢出点点点显示：
+        方法1.伪元素实现 
+        方法2.webkit可以css属性实现
+        方法3.强制截取字符串实现
+    -->
+    <style>
+        p {
+            width: 20em;
+            position: relative;
+            line-height: 1.4em;
+            height: 2.8em;
+            overflow: hidden;
+        }
+
+        p:after {
+            content: "...";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #FFF;
+            padding-left: 0.4em;
+            width: 1.6em;
+        }
+    </style>
+</head>
+
+<body>
+    <p>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈水水水水水水水水水水哈吼吼吼吼吼吼吼吼吼阿三水水水水水水水水水水哈哈哈哈哈</p>
+</body>
+
+</html>
