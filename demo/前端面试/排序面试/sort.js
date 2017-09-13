@@ -48,7 +48,7 @@ function selectionSort(arr) {
                 minIndex = j;                 //将最小数的索引保存
             }
         }
-        temp = arr[i];
+        temp = arr[i];                        //交换数据
         arr[i] = arr[minIndex];
         arr[minIndex] = temp;
     }

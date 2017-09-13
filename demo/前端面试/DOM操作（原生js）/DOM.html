@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrap">
+        <div class="item1">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="item2"></div>
+        <div class="item3"></div>
+    </div>
+    <script>
+        //NodeList和HTMLCollection
+
+        /**
+         * node类型：ELEMENT.nodeType
+         *      1：ELEMENT
+         *      3: TEXT
+         * node其他属性：nodeName（标签名），nodeValue（始终为null）
+        */
+
+        /**
+         * 节点关系：
+         *  每个节点都有：childNodes和parentNode属性
+         *      nextSibling和previousSibling属性（不存在时为null）
+         *      ownerDocument属性可以直接访问文档节点document
+         *      父节点的firstChild和lastChild: ELEMENT.firstChild==ELEMENT.childNodes[0],所以会出现文本空白节点
+         *      使用firstElementChild和lastElementChild效果最佳
+         *      childNodes和children都可以用.item()方法或者数组索引查找;parentElement:父Element节点
+        */
+        var wrap = document.getElementById('wrap');
+        console.log(wrap.childNodes);  //包含标签之间的空白text节点（不使用）
+        console.log(wrap.children);    //不包含text节点（常用）
+        console.log(wrap.parentNode);
+        console.log(wrap.ownerDocument);
+        console.log(wrap.firstChild,wrap.firstElementChild);
+        /**
+         * 操作节点：
+         *     1.appendChild(newNode):用于向childNodes列表末尾添加一个节点
+         *     2.insertBefore(newNode,oldNode):插入某个节点之前
+         *          insertBefore(newNode,null):插入后成为最后一个子节点
+         *          insertBefore(newNode,someNode.firstChild):插入后成为第一个子节点  
+         *          insertBefore(newNode,someNode.lastChild):插入到最后一个子节点前面  
+         *     
+         *     3.replaceChild(newNode,oldNode):替换节点
+         *     4.removeChild(oldNode):移除节点
+         *          removeChild(someNode.firstNode)
+         *  
+         *     5.cloneNode(boolean):复制节点
+         *          boolean:true  -> 深复制:复制节点以及整个子节点树
+         *          boolean:false -> 浅复制:仅复制节点本身
+         * 
+        */
+        console.log(wrap.firstElementChild.cloneNode(false));
+
+        /**
+         * 文档子节点document
+         *      1.document.documentElement==document.childNodes[0]==document.firstChild
+         *      2.document.body
+         *      3.document.title
+         *      4.document.URL
+         *      5.document.referrer :来源页面url
+         *      6.document.domain
+        */
+
+        /**
+         * 查找节点:
+         *      document.querySelector(selectors)   //接受一个CSS选择器作为参数，返回第一个匹配该选择器的元素节点。
+         *      document.querySelectorAll(selectors)  //接受一个CSS选择器作为参数，返回所有匹配该选择器的元素节点。
+         *      document.getElementsByTagName(tagName)  //返回所有指定HTML标签的元素
+         *      document.getElementsByClassName(className)   //返回包括了所有class名字符合指定条件的元素
+         *      document.getElementsByName(name)   //用于选择拥有name属性的HTML元素S
+         *      document.getElementById(id)   //返回匹配指定id属性的元素节点。
+        */
+
+        /**
+         * 每个元素都有一个或多个特性attribute
+         *      1.getAttribute()
+         *      2.setAttribute()
+         *      3.removeAttribute()
+         *      4.attributes属性
+        */
+
+        wrap.setAttribute('class','hello');
+        var attr = wrap.attributes;
+        console.log(attr);
+        wrap.setAttribute('name','hello');
+        wrap.setAttribute('data-id','1200');
+        console.log(attr);  //attr动态集合
+
+
+        /**
+         * 创建元素：
+         *      1.document.createElement()
+         *      2.document.createTextNode()
+        */
+
+    </script>
+</body>
+</html>
