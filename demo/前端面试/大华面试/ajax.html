@@ -40,6 +40,27 @@
         }
         xhr.send(null);
 
+        /*
+        readyState:表示请求状态的整数，取值：
+            UNSENT（0）：对象已创建
+            OPENED（1）：open()成功调用，在这个状态下，可以为xhr设置请求头，或者使用send()发送请求
+            HEADERS_RECEIVED(2)：所有重定向已经自动完成访问，并且最终响应的HTTP头已经收到
+            LOADING(3)：响应体正在接收
+            DONE(4)：数据传输完成或者传输产生错误
+        onreadystatechange：readyState改变时调用的函数
+        status：服务器返回的HTTP状态码（如，200， 404）
+        statusText:服务器返回的HTTP状态信息（如，OK，No Content）
+        responseText:作为字符串形式的来自服务器的完整响应
+        responseXML: Document对象，表示服务器的响应解析成的XML文档
+        abort():取消异步HTTP请求
+        getAllResponseHeaders(): 返回一个字符串，包含响应中服务器发送的全部HTTP报头。每个报头都是一个用冒号分隔开的名/值对，
+        并且使用一个回车/换行来分隔报头行
+        getResponseHeader(headerName):返回headName对应的报头值
+        open(method, url, asynchronous [, user, password]):初始化准备发送到服务器上的请求。method是HTTP方法，不区分大小写；
+        url是请求发送的相对或绝对URL；asynchronous表示请求是否异步；user和password提供身份验证
+        setRequestHeader(name, value):设置HTTP报头
+        send(body):对服务器请求进行初始化。参数body包含请求的主体部分，对于POST请求为键值对字符串；对于GET请求，为null
+        */
 
         //跨域，JSONP和服务端设置Http header
     </script>
