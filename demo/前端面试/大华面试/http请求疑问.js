@@ -15,7 +15,8 @@
  *      （5）把请求按功能和场景分下类，对数据请求频繁，数据不敏感且数据量在普通浏览器最小限定的2k范围内，这样的情况使用GET。其他地方使用POST。
  *      （6）GET 的本质是「得」，而 POST 的本质是「给」。而且，GET 是「幂等」的，在这一点上，GET 被认为是「安全的」。
  *          但实际上 server 端也可以用作资源更新，但是这种用法违反了约定，容易造成 CSRF（跨站请求伪造）
- *      
+ *      GET请求： www2.soopat.com/Home/Result?SearchWord=李嘉琪&FMZL=Y&SYXX=Y&WGZL=Y&FMSQ=Y     
+ *      POST请求：
  * 4.post请求异步实现参数
  *      ajax中open方法第三参数open(methods,url,boolean)
  * 
