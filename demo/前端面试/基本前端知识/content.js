@@ -54,7 +54,7 @@ fn3.call({x: 100}, 'zhangsan', 20);  //this就是{x: 100}
 
 var fn4 = function (name, age) {
     alert(name);
-    console.log(this);
+    console.log(this.y);
 }.bind({y: 200 });    //使用bind时函数必须是函数表达式
 fn4('zhangsan', 20);
 
