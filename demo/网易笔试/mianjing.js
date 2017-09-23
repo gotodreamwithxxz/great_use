@@ -172,6 +172,7 @@ var eventUtil = {
 
 4.前端跨域，从同源机制聊到六种跨域方法基本全了。提了CSRF与XSS没讲细节。
     ------必看
+    
 
 5.又问了一次浏览器缓存机制。比第一次说的全了一些。
 
@@ -315,7 +316,43 @@ var eventUtil = {
 2.2048小游戏的响应式设计是怎么实现的
 3.写一个左侧固定右侧自适应的布局（这里我用到了之前在网上看到的float+padding方法，面试官表示他居然没看过这个方法。。。）
 4.写一个函数每隔5秒调用它自身，总共调用100次，要求可以自定义调用次数和延时时间。
+    function fn(num, times){
+        if (num == 0){
+            clearTimeout(timer);
+            return;
+        }
+        console.log(new Date());
+        var timer = setTimeout(function(){
+            fn(num-1,times);
+        },times);
+    }
+    fn(100, 5000);
 5.setTimeout中第一个参数除了使用匿名函数包裹，还可以怎么调用一个含参函数
+
+
+
+/**
+ * 一道考题：
+ * 确定考点：应该考察我 JavaScript 的运行机制的，让我理一下思路。
+ * 首先先碰到一个 setTimeout，于是会先设置一个定时，在定时结束后将传递这个函数放到任务队列里面，因此开始肯定不会输出 1 。
+ * 然后是一个 Promise，里面的函数是直接执行的，因此应该直接输出 2、3 。
+ * 然后，Promise 的 then 应当会放到当前 tick 的最后，但是还是在当前 tick 中。
+ * 因此，应当先输出 5，然后再输出 4 。最后在到下一个 tick，就是 1 。
+ *  “2 3 5 4 1”
+ * 
+setTimeout(function () {
+    console.log(1)
+}, 0);
+new Promise(function executor(resolve) {
+    console.log(2);
+    for (var i = 0; i < 10000; i++) {
+        i == 9999 && resolve();
+    }
+    console.log(3);
+}).then(function () {
+    console.log(4);
+});
+console.log(5);
 
 项目相关问题
 前端怎么验证用户信息，怎么保存登陆状态？
