@@ -21,15 +21,14 @@ console.log(res.toFixed(2));
 var n = parseInt(15);
 var arr = [];
 var m = (n-1)%2;
-var num = n;
-while (num != 0) {
+while (n != 0) {
     if (m==1){
     	arr.push('2');
 	} else {
     	arr.push('1');
     }
-    num = Math.floor((num-1)/2);
-    m = (num-1)%2;
+    n = Math.floor((n-1)/2);
+    m = (n-1)%2;
 }
 console.log(arr.reverse().join(''));
 

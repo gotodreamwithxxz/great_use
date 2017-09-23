@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .hide{
+        display: none;
+    }
+    </style>
+</head>
+<body>
+    <div id="jsCount">
+        <span>01天</span>
+        <span>02:</span>
+        <span>03:</span>
+        <span>04</span>
+    </div>
+
+    <script>
+        function count(second){
+            //精确到天、时、分、秒
+            var day    = Math.floor(second / 60 / 60 / 24),
+                hour   = Math.floor(second / 60 / 60 % 24),
+                min    = Math.floor(second / 60 % 60),
+                second = Math.floor(second % 60);
+            return {
+                day : day,
+                hour : hour,
+                min : min,
+                second : second
+            };
+        }
+        function render(data){
+            var div     = document.getElementById('jsCount'),
+                span    = div.getElementsByTagName('span');
+            var day     = data.day,
+                hour    = data.hour,
+                min     = data.min,
+                second  = data.second;
+            if(day == 0){
+                span[0].className = 'hide';
+            }else{
+                day = day < 10 ? '0' + day : day;
+                span[0].innerText = day + '天';
+
+            }
+            hour   = hour < 10 ? '0' + hour : hour;
+            min    = min < 10 ? '0' + min : min;
+            second = second < 10 ? '0' + second : second;
+            span[1].innerText = hour + ':';
+            span[2].innerText = min + ':';
+            span[3].innerText = second ;
+        }
+        var second = 2000;
+        setInterval(function(){
+            second -=1;
+            render(count(second));
+        },1000);  
+    </script>
+    
+</body>
+</html>
