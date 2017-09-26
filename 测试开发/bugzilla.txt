@@ -1,0 +1,25 @@
+Bugzilla 是一个开源的缺陷跟踪系统（Bug-Tracking System），它可以管理软件开发中缺陷的提交（new），修复（resolve），关闭（close）等整个生命周期
+Bugzilla是一个搜集缺陷的数据库。它让用户报告软件的缺陷从而把它们转给合适的开发者。
+开发者能使用bugzilla保持一个要做事情的优先表，还有时间表和跟踪相关性。
+
+Bug报告分类
+	待确认的（Unconfirmed）
+	新提交的（New）
+	已分配的（Assigned）
+	问题未解决的（Reopened）
+	待返测的（Resolved）
+	待归档的（Verified）
+	已归档的（Closed）
+Bug处理意见
+	已修改的（Fixed）
+	不是问题（Invalid）
+	无法修改（Wontfix）
+	以后版本解决（Later）
+	保留（Remind）
+	重复（Duplicate）
+	无法重现（Worksforme）
+指定处理人
+	可以指定一个处理人
+	如不指定处理人，则系统指定管理员为默认处理人
+链接
+	输入超链接地址，引导处理人找到与报告相关联的信息
