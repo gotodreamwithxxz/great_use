@@ -19,7 +19,6 @@ link与@import的区别
     总体来说：link优于@import
 
 CSS有哪些继承属性
-    关于文字排版的属性如：
     font    word-break  letter-spacing  text-align  text-rendering
     word-spacing    white-space     text-indent     text-transform
     text-shadow     line-height     color       visibility      cursor

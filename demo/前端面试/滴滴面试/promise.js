@@ -88,8 +88,8 @@ var url = 'https://hq.tigerbrokers.com/fundamental/finance_calendar/getType/2017
 
 function getJSON(url) {
     return new Promise(function (resolve, reject) {
-        var XHR = new XMLHttpRequest();
-        XHR.open('GET', url, true);
+        var XHR = new XMLHttpRequest();         //考虑xhr的兼容性
+        XHR.open('GET', url, true);             //true代表异步，false代表同步
         XHR.send();
 
         XHR.onreadystatechange = function () {
@@ -109,12 +109,16 @@ function getJSON(url) {
     })
 }
 
-getJSON(url).then(resp => console.log(resp));
+getJSON(url).then(resp => 
+    {return resp+'12';}
+).then(resp =>
+    console.log(resp)
+);
 
 /**
  * promise应用场景
  * 1.有效的将ajax的数据请求和数据处理分别放在不同的模块中进行管理，
- *      这样做的主要目的在于降低后期维护成本，便于管理。模块化开发（封装ajax）
+ *   这样做的主要目的在于降低后期维护成本，便于管理。模块化开发（封装ajax）
  * 2.图片加载
  * 3.弹窗提示问题，确定是resolve，取消是reject
  *

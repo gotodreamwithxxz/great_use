@@ -84,6 +84,7 @@ F2(f1);   //打印出来是100
 function isFirstLoad(){
     var _list = [];
     return function(id) {
+        console.log(_list);
         if (_list.indexOf(id)>=0) {
             return false;
         } else{
